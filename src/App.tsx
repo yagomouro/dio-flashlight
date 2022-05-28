@@ -32,7 +32,15 @@ const App = () => {
 
   useEffect(() => {
     const subscription = RNShake.addListener(() => {
-      setToggle((oldToggle) => !oldToggle);
+      if (toggle) {
+        setLampImg(darkLamp);
+        setDio(darkLogoDio);
+        setToggle((oldToggle) => !oldToggle);
+      } else {
+        setLampImg(lightLamp);
+        setDio(lightLogoDio);
+        setToggle((oldToggle) => !oldToggle);
+      }
     });
 
     return () => subscription.remove();
